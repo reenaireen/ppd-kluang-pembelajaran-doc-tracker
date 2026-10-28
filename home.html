@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - PPD Kluang Document Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bg-slideshow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+        /* Optional dark overlay so text is easier to read over photos */
+        .bg-slideshow::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(253, 251, 247, 0.70); 
+        }
+    </style>
+</head>
+<body class="bg-transparent min-h-screen flex flex-col justify-between text-gray-800 relative">
+
+    <!-- Header / Nav -->
+    <header class="bg-white/90 backdrop-blur border-b border-[#EDE8D0] px-6 py-4 flex justify-between items-center shadow-sm relative z-10">
+        <div class="flex items-center gap-3">
+            <img src="logoppd-removebg-preview.jpg" alt="PPD Kluang Logo" class="h-12 object-contain">
+            <h1 class="text-xl font-bold text-[#6A1B29]">SEKTOR PEMBELAJARAN PPD KLUANG</h1>
+        </div>
+        <div class="flex items-center gap-3">
+            <a href="login.html" class="text-sm font-semibold text-gray-600 hover:text-[#6A1B29] px-3 py-2 transition">Login</a>
+            <a href="signup.html" class="bg-[#6A1B29] text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-[#52131F] transition">Sign Up</a>
+        </div>
+    </header>
+
+    <!-- Main Hero Section -->
+    <main class="max-w-4xl mx-auto px-6 py-16 text-center space-y-8 my-auto relative z-10">
+        <div class="space-y-4">
+            <span class="text-xs uppercase tracking-widest bg-amber-100 text-amber-800 px-3 py-1 rounded-full font-bold">Official Portal</span>
+            <h2 class="text-4xl md:text-5xl font-extrabold text-[#6A1B29] tracking-tight">
+                SEKTOR PEMBELAJARAN SURAT RASMI & DOKUMEN TRACKER
+            </h2>
+            <p class="text-gray-700 max-w-2xl mx-auto text-lg font-medium">
+                
+            </p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+            <a href="login.html" class="w-full sm:w-auto bg-[#6A1B29] text-white font-semibold px-8 py-3.5 rounded-xl shadow-md hover:bg-[#52131F] transition text-center">
+                Log In to Account
+            </a>
+            <a href="signup.html" class="w-full sm:w-auto bg-white/90 border border-[#6A1B29] text-[#6A1B29] font-semibold px-8 py-3.5 rounded-xl hover:bg-amber-50 transition text-center">
+                Create New Account
+            </a>
+        </div>
+    </main>
+    
+    <!-- Background Slideshow Container -->
+    <div class="bg-slideshow">
+        <div class="slide active" style="background-image: url('uploads/ppd1.jpg');"></div>
+        <div class="slide" style="background-image: url('uploads/ppd2.jpg');"></div>
+        <div class="slide" style="background-image: url('uploads/ppd3.jpg');"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white/90 backdrop-blur border-t border-[#E5E0D5] text-center py-4 text-xs text-gray-500 relative z-10">
+        &copy; 2026 Aireen Dev. All rights reserved.
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.bg-slideshow .slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        if (slides.length > 0) {
+            setInterval(nextSlide, 5000); // Changes picture every 5 seconds
+        }
+    </script>
+</body>
+</html>
